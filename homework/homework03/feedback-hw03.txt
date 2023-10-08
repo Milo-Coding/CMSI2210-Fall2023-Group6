@@ -41,11 +41,11 @@ Problems "B-level"
    Question  05     1/1 pt.
    Question  06     1/1 pt.
    Question  07     1/1 pt.
-   Question  08     0/1 pt.   nope!
+   Question  08     0/1 pt.   Corrected
    Question  09     1/1 pt.
    Question  10     1/1 pt.
    Question  11     1/1 pt.
-   Question  12     0/1 pt.   nope!
+   Question  12     0/1 pt.   Corrected
    Question  13     1/1 pt.
    Question  14     1/1 pt.
    Question  15     1/1 pt.
@@ -59,7 +59,7 @@ Problems "A-level"
    Question  02     1/1 pt.
    Question  03     1/1 pt.
    Question  04     1/1 pt.
-   Question  05     0/1 pt.   nope!
+   Question  05     0/1 pt.   Corrected
    Question  06     1/1 pt.
    Question  07     1/1 pt.
    Question  08   for fun only!
@@ -94,4 +94,14 @@ have a "C" for the assignment.
 Make your corrections and re-submit to your repo by Thursday, September 28th.
 You'll get full credit for the highest section's value that has 100% correct
 answers.
+
+
+========================================================
+FINAL PASS OUTCOME:
+
+Combining all levels into one assignment.
+
+Total of 45 problems.
+
+You earned 45/45 which is 100.0% which is an A-plus.
 
