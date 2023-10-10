@@ -6,10 +6,10 @@ Answers to homework 4
    X := (A NAND A) NAND ( ((B NAND C) NAND (B NAND C)) NAND ((B NAND C) NAND (B NAND C)) )
    Y := ( (A NAND A) NAND (A NAND A) ) NAND (C NAND C)
 
-2. Drawing in pdf
+2. Circuit diagram in PNG
 
-3. a. AND   0xAAAAAAAA      ; Clear even bits by ANDing with the all even bits as 0s and all odd bits as 1s
-   b. OR    0x00000007      ; Set the last three bits by ORing with just the last 3 bits active (0x00000007)
+3. a. AND   0xAAAAAAAA      ; Clear even bits by ANDing with the mask (all even bits as 0s and all odd bits as 1s)
+   b. OR    0x00000007      ; Set the last three bits by ORing with the mask (just the last 3 bits active)
    c. AND   0x00000007      ; Use bitwise AND with 0x00000007 to keep only the remainder (value < 8)
    d. OR    0xFFFFFFFF      ; Set all bits to 1 (this is -1 in a signed interpretation) by ORing
    e. XOR   0xC0000000      ; Complement the two highest order bits by XORing with the hightest order bits set to 1s
@@ -63,23 +63,20 @@ Answers to homework 4
    end: JUMP    end     ; this "stops" the program!
 
 
-7. 
-For the sample single-accumulator computer discussed in class, give a code fragment,
-in assembly language of the stanley/penguin language, that swaps the accumulator and
-memory address 0x30AA. You do not need to write machine code for this problem.
+7.      JMP     start   ; jump data area
+ temp1: 0               ; extra spaces to store data
+ temp2: 0               ; 
+ start: STORE   temp1   ; put the value in the accumulator into one of the temp variables
+        LOAD    0x30AA  ; put the 0x30AA in the accumulator
+        STORE   temp2   ; put the 0x30AA in the other temp var
+        LOAD    temp1   ; get original value back
+        WRITE   0x30AA  ; put the original accumulator value into the 0x30AA memory address
+        LOAD    temp2   ; put the value from 0x30AA into the accumulator
 
-8. 
-For the sample single-accumulator computer discussed in class, give a code fragment,
-in assembly language of the stanley/penguin language that has the effect of jumping to
-the code at address 0x837BBE1 if the value in the accumulator is greater than or equal
-to 0. You do not need to write machine code for this problem.
+8.      JGZ     0x837BBE1   ; jump to 0x837BBE1 if accumulator is greater than zero
+        JZ      0x837BBE1   ; jump to 0x837BBE1 if accumulator is zero
 
-9. Part 1:
-Explain, at a high-level, what the following sequence of instructions does. In other words,
-suppose a programmer has stored data in r8 and r9. After executing these instructions,
-what does the programmer notice about the data?
-      xor r8, r9
-      xor r9, r8
-      xor r8, r9
-   Part 2:
-Also state as briefly as possible why that effect happens.
+9. Part 1: The sequence of instructions effectivly swapps the data held in r8 and r9 with each other
+   Part 2: That effect happens because the XOR function effectivly returns the first input if the result
+           is XOR'd with the second input. Therefore flipping which location the result is stored in the
+           second and third lines flips the data that was in those two spots
