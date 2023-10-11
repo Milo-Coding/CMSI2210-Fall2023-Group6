@@ -17,7 +17,7 @@ Answers to homework 4
 
 4.      JMP     start   ; begin by jumping over the data area
  count: 0               ; store the current counter value here
- limit: 255             ; we'll be counting up to this amount
+ limit: 256             ; we'll be counting up to one less than this amount because of how the code is set up
  start: LOAD count      ; bring the value into accumulator to use
         WRITE   0x8     ; output the current count to port 8
         ADD     0x01    ; adding 1 to itself makes the next number!
