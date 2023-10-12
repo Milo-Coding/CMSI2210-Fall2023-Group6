@@ -167,6 +167,8 @@ int main() {
    } else {
       printf("\n\n   Victory! The word is \"%s\".\n", words[index]);
    }
-   
+   char letter[1];
+   printf("enter any letter to exit");
+   scanf( "%s", letter );
    return 0;
 }
