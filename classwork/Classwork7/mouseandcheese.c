@@ -109,6 +109,12 @@ int main() {
    *   the number of letters in the word each time, then initialized to 
    *   all false using a loop.
    */
+   int len = strlen(words[index]);
+   int mask[len];
+   for(int i = 0; i < len; ++i) {
+      mask[i] = FALSE;
+   }
+   
 
   /*
    * Print the instructions
@@ -116,21 +122,43 @@ int main() {
    instructions();
 
   // Loop over each round of guessing
-   while( /* what two conditions are needed here? */ ) {
-     // Print word with underscores for unguessed letters
+   while(allGuessed == FALSE && guesses < 10) {
+      // Print word with underscores for unguessed letters
       printf( "\n  The word is now: " );
-      for( int j = 0; j < N; ++j ) {
-        // TODO: fill this in!
+      for( int i = 0; i < len; ++i ) {
+         if (mask[i]) {
+            printf("%c ", words[index][i]);
+         } else {
+            printf("_ ");
+         }
       }
-      printf( "    You've used %d of %d guesses...\n", guesses, MAX_GUESSES );
+      printf("    You've used %d of %d guesses...\n", guesses, MAX_GUESSES);
 
-     // Get player's next guess
+      // Get player's next guess
       guess = getLetterFromUserInUppercase();
 
-     // Mark as true all mask positions corresponding to guess
-     //  if they are correct!
-
-     // Determine whether the player has won!
+      // Mark as true all mask positions corresponding to guess if they are correct!
+      found = FALSE;
+      for( int i = 0; i < len; ++i ) {
+          if (guess == words[index][i]) {
+             mask[i] = TRUE;
+             found = TRUE;
+          }
+      }
+      if( !found ) {
+         guesses++;
+         printf( "\n    Didn't find that letter!\n" );
+      }
+      
+      // Determine whether the player has won!
+      allGuessed = TRUE;
+      for( int m = 0; m < len; ++m ) {
+         if( !mask[m] ) {
+            allGuessed = FALSE;
+            break;
+         }
+      }
+          
    }
 
   // Print victory message!
@@ -139,6 +167,6 @@ int main() {
    } else {
       printf("\n\n   Victory! The word is \"%s\".\n", words[index]);
    }
-
+   
    return 0;
 }
