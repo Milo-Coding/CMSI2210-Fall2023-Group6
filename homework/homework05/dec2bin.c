@@ -56,7 +56,7 @@ int main (int argc, char * argv[]) {
  	
  	
  	if (dec < 0 || dec > 4294967295) {
- 		printf("Error! Please only enter integer from 0 to 2147483647");
+ 		printf("Error! Please only enter integer from 0 to 2147483647\n");
  		exit(0);
  	}
  	
@@ -70,7 +70,8 @@ int main (int argc, char * argv[]) {
  		}
  		multipleOfTwo /= 2;
  	}
-    printf("   Your binary number is: %s", decAsBin);
+ 	
+    printf("   Your binary number is: %s\n", decAsBin);
  	 	
  	exit(0);
  }
