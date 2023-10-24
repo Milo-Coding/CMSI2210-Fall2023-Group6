@@ -12,9 +12,22 @@
  
 void instructions() {
     printf( "\n\n   This is a decimal to binary converter program \n" );
-    printf( "   It converts any decimal number less than or equal to 2147483647 to its binary equivolant. \n\n\n" );
+    printf( "   It converts any posative decimal number less than or equal to 4294967295 to its binary equivolant. \n\n\n" );
 }
- 
+
+// helper method for making dec an unsigned int
+unsigned int convert(char *st) {
+    char *x;
+    for (x = st ; *x ; x++) {
+        if (!isdigit(*x)) {
+            printf("Error! Please only enter integer from 0 to 2147483647");
+ 		    exit(0);
+ 		}
+
+      }
+  return (strtoul(st, 0L, 10));
+}
+
 int main (int argc, char * argv[]) {
     // space for the input decimal # (max 10 digits and 0/)
     char decIn[11];
@@ -23,14 +36,15 @@ int main (int argc, char * argv[]) {
     char decAsBin[] = "00000000000000000000000000000000";
     
     // dracker of the decimal value and a counter for our twos place
-    int dec;
-    int multipleOfTwo = 1073741824;
+    unsigned int dec;
+    long multipleOfTwo = 2147483648;
  	
     // ask for decimal if its not given
     if (argc < 2) {
         instructions();
         printf("   Enter a number: ");
         fflush (stdout);
+        fflush(stdin);
         scanf("%s", decIn);
         
  	} else {
@@ -38,24 +52,25 @@ int main (int argc, char * argv[]) {
  	}
  	
  	// turn our input into a decimal number
- 	dec = atoi(decIn);
+ 	dec = convert(decIn);
  	
- 	if (dec < 0) {
- 		printf("Error! Please only enter integer numbers less than or equal to 2147483647");
+ 	
+ 	if (dec < 0 || dec > 4294967295) {
+ 		printf("Error! Please only enter integer from 0 to 2147483647");
  		exit(0);
  	}
  	
  	printf("   Computing your binary number... \n");
  	
  	// ten is the max length for the binary number
- 	for (int powerOf2 = 30; powerOf2 >= 0; powerOf2--) {
+ 	for (int powerOf2 = 31; powerOf2 >= 0; powerOf2--) {
  		if (multipleOfTwo <= dec) {
  			decAsBin[31 - powerOf2] = '1';  // add a 1 to the binary in the correct place
  			dec %= multipleOfTwo;  // remove that much from the decimal number
  		}
  		multipleOfTwo /= 2;
  	}
-    printf("%s", decAsBin);
+    printf("   Your binary number is: %s", decAsBin);
  	 	
  	exit(0);
  }
