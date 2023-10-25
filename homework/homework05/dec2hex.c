@@ -1,9 +1,10 @@
 /*
  * file: dec2bin.c
  *
- * biggest possible decimal #: 4,294,967,295
- * biggest binary #: 1111 1111 1111 1111 1111 1111 1111 1111
- * biggest hex #: FFFFFFFF
+ * biggest possible decimal (32) #: 4,294,967,295
+ * biggest hex (32) #: FFFFFFFF
+ * biggest possible decimal (64) #: 18,446,744,073,709,551,616
+ * biggest hex (32) #: FFFFFFFFFFFFFFFF
  */
  
 #include <stdio.h>
@@ -75,7 +76,6 @@ int main (int argc, char * argv[]) {
  		multipleOfTwo /= 2;
  	}
  	
- 	printf("   Your bin number is: %s\n", decAsBin);
  	/*
  	 * after we have our binary number, convert it to hex
  	 * do this by looping through the binary number and adding
@@ -92,10 +92,24 @@ int main (int argc, char * argv[]) {
 			if (decAsBin[binaryIndex] == '1') {
 				// should add 1 for each on bit				
  				decAsHex[hexDigit] += pow(2, binDigit);
+ 				// account for ASCII offset of characters by shifting digits > 9
+ 				if (decAsHex[hexDigit] == ':') {
+ 					decAsHex[hexDigit] = 'A';
+ 				} else if (decAsHex[hexDigit] == ';') {
+ 					decAsHex[hexDigit] = 'B';
+ 				} else if (decAsHex[hexDigit] == '<') {
+ 					decAsHex[hexDigit] = 'C';
+ 				} else if (decAsHex[hexDigit] == '=') {
+ 					decAsHex[hexDigit] = 'D';
+ 				} else if (decAsHex[hexDigit] == '>') {
+ 					decAsHex[hexDigit] = 'E';
+ 				} else if (decAsHex[hexDigit] == '?') {
+ 					decAsHex[hexDigit] = 'F';
+ 				} 
  			}
  		}
  	}	
  	
-    printf("   Your hexidecimal number is: %s\n", decAsHex);	
+    printf("   Your hexidecimal number is: 0x%s\n", decAsHex);	
  	exit(0);
  }
