@@ -3,16 +3,18 @@
  *
  * biggest possible decimal #: 4,294,967,295
  * biggest binary #: 1111 1111 1111 1111 1111 1111 1111 1111
+ * biggest hex #: FFFFFFFF
  */
  
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
+#include <math.h>
  
 void instructions() {
-    printf( "\n\n   This is a decimal to binary converter program \n" );
-    printf( "   It converts any posative decimal number less than or equal to 4294967295 to its binary equivolant. \n\n\n" );
+    printf( "\n\n   This is a decimal to hexidecimal converter program \n" );
+    printf( "   It converts any posative decimal number less than or equal to 4294967295 to its hexidecimal equivolant. \n\n\n" );
 }
 
 // helper method for making dec an unsigned int
@@ -34,6 +36,8 @@ int main (int argc, char * argv[]) {
  	
  	// inital string for binary number (== 0)
     char decAsBin[] = "00000000000000000000000000000000";
+    // inital string for the hex numver (also == 0)
+    char decAsHex[] = "00000000";
     
     // dracker of the decimal value and a counter for our twos place
     unsigned int dec;
@@ -60,7 +64,7 @@ int main (int argc, char * argv[]) {
  		exit(0);
  	}
  	
- 	printf("   Computing your binary number... \n");
+ 	printf("   Computing your hexidecimal number... \n");
  	
  	// ten is the max length for the binary number
  	for (int powerOf2 = 31; powerOf2 >= 0; powerOf2--) {
@@ -71,7 +75,27 @@ int main (int argc, char * argv[]) {
  		multipleOfTwo /= 2;
  	}
  	
-    printf("   Your binary number is: %s\n", decAsBin);
- 	 	
+ 	printf("   Your bin number is: %s\n", decAsBin);
+ 	/*
+ 	 * after we have our binary number, convert it to hex
+ 	 * do this by looping through the binary number and adding
+ 	 * its value to the corrosponding spot in the hex number
+ 	 */
+ 	int binaryIndex;
+ 	for (int hexDigit = 0; hexDigit < 8; hexDigit++) {
+ 		// for each hex digit
+ 		for (int binDigit = 3; binDigit >= 0; binDigit--) {
+ 			// for each group of 4 bits
+ 			// get the current bits index
+ 			binaryIndex = 4 * hexDigit + (3 - binDigit);
+ 			// add that bit's value to the hex digit
+			if (decAsBin[binaryIndex] == '1') {
+				// should add 1 for each on bit				
+ 				decAsHex[hexDigit] += pow(2, binDigit);
+ 			}
+ 		}
+ 	}	
+ 	
+    printf("   Your hexidecimal number is: %s\n", decAsHex);	
  	exit(0);
  }
