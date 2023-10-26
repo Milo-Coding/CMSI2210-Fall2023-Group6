@@ -1,16 +1,15 @@
          global   _main                ; this is the main entry point
          extern   _printf              ; external code from "C" library
-         default  rel                  ; default to 'relative' addressing
 
          section  .text                ; text [code] segment
 
 _main:
-         push     rbx                  ; save this for return to O/S
-         lea      rdi, [message]       ; load effective address of message
-         call     _printf              ; call "C" printf function
+          push    message              ; windows is different! push instead of lea
+          call    _printf              ; call printf()
+          add     esp, 4               ; we 'pushed' so we restore stack pointer
 
-exit:    pop      rbx                  ; restore base pointer
-         ret                           ; return to O/S
+          ret                          ; return to O/S
 
-         section  .data
-message: db       "Hello, world!", 0x0A, 0x00
+message:  db  'Hello, World', 0x0A, 0x00
+
+            
