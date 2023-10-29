@@ -43,17 +43,33 @@ int main (int argc, char * argv[]) {
     // dracker of the decimal value and a counter for our twos place
     unsigned int dec;
     long multipleOfTwo = 2147483648;
+    
+    // the number of bits we want represented
+    char bits[] = "32";
  	
     // ask for decimal if its not given
-    if (argc < 2) {
+    if (argc < 3) {
         instructions();
         printf("   Enter a number: ");
         fflush (stdout);
         fflush(stdin);
         scanf("%s", decIn);
+        printf("   would you like 32 or 64 bits?: ");
+        fflush (stdout);
+        fflush(stdin);
+        scanf("%s", bits);
+        
+ 	} else if (argc < 2) {
+        instructions();
+        printf("   Enter a number: ");
+        fflush (stdout);
+        fflush(stdin);
+        scanf("%s", decIn);
+        strcpy(bits, argv[2]);
         
  	} else {
  		strcpy(decIn, argv[1]);
+ 		strcpy(bits, argv[2]);
  	}
  	
  	// turn our input into a decimal number
@@ -62,6 +78,11 @@ int main (int argc, char * argv[]) {
  	
  	if (dec < 0 || dec > 4294967295) {
  		printf("Error! Please only enter integer from 0 to 2147483647\n");
+ 		exit(0);
+ 	}
+ 	
+ 	if ((strcmp(bits, "32") != 0) && (strcmp(bits, "64") != 0)) {
+ 		printf("Error! Please only pick 32 or 64 bits\n");
  		exit(0);
  	}
  	
@@ -110,6 +131,11 @@ int main (int argc, char * argv[]) {
  		}
  	}	
  	
-    printf("   Your hexidecimal number is: 0x%s\n", decAsHex);	
+    if (strcmp(bits, "32") == 0) {
+    	printf("   Your hexidecimal number is: 0x%s\n", decAsHex);	
+    } else {
+    	// can't handle input numbers greater than 4294967295 = 0x00000000FFFFFFFF
+    	printf("   Your hexidecimal number is: 0x00000000%s\n", decAsHex);	
+    }
  	exit(0);
  }
