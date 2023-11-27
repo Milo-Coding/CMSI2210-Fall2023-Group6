@@ -1,16 +1,7 @@
 ; ----------------------------------------------------------------------------
 ; gcdFinder.nasm
 ;
-; This is a Win32 console program that uses Euclid's algorithm to find the GCD
-;  of two numbers and return it to the caller.  The two numbers are passed as
-;  arguments.
-;
-; Algorithm:  return (b == 0) ? a : (gcd( b, a % b ))
-;
-;  eax will be the "a" value and ecx will be the "b" value
-;
-;  to assemble for windows:   nasm -f win32 findGCD.nasm
-;  to link for win32:         gcc -m32 findGCD.obj -o findGCD.exe
+; Win32 function to find the GCD when called by gcdFinder.c
 ; ----------------------------------------------------------------------------
 
          global      _gcdFinder
@@ -19,33 +10,31 @@
 
 _gcdFinder:
 filetop:
-         push        ebp               ; we have to save this since we use it
-         mov         ebp,  esp         ; point to first parameters
+         push        ebp               ;
+         mov         ebp,  esp         ;
 
 getnums:
-         mov         eax,  [ebp+8]     ; get first number
-         mov         ecx,  edx         ; get second number ~ not sure why it's
-                                       ;  in edx, but it is...
+         mov         eax,  [ebp+8]     ; get first number (locations taken from example)
+         mov         ecx,  edx         ; get second number
 
 calc:
-         cmp         eax,  ecx         ; check if 'a' == 'b'
-         je          end               ;  if it is, nothing to do
-         jb          swap              ; if ebx > eax swap 'em
-         jmp         top               ; all good, skip next part
+         cmp         eax,  ecx         ;
+         je          end               ;
+         jb          swap              ; 
+         jmp         top               ;
 swap:
-         xchg        eax,  ecx         ; swap 'em
+         xchg        eax,  ecx         ;
 top:
-         xor         edx,  edx         ; set up edx for remainders
-         idiv        ecx               ; eax now eax/ebx, rmndr in edx
-         test        edx,  edx         ; if rmndr==0, we're done
+         xor         edx,  edx         ; 
+         idiv        ecx               ;
+         test        edx,  edx         ;
          je          end
-         mov         eax,  ecx         ; else, put dividend 'b' in divisor 'a'
-         mov         ecx,  edx         ;  then rmndr becomes divisor 'b'
-         jmp         top               ;  and go again
+         mov         eax,  ecx         ;
+         mov         ecx,  edx         ;
+         jmp         top               ; 
 
 end:
-         mov         eax,  ecx         ; put GCD into eax
-         mov         esp,  ebp         ; restore stack pointer
-         pop         ebp               ; restore base pointer
+         mov         eax,  ecx         ;
+         mov         esp,  ebp         ;
+         pop         ebp               ;
          ret
-

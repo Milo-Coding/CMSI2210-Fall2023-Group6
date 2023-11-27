@@ -1,10 +1,7 @@
 /*
- * filename: whichEndIsUp.c
- * purpose:  to determine whether this is a big-endian
- *             or a little-endian computer
- *
- * NOTE: this program is intended for PC, but should run on either
- *    Mac or PC since there is no code that is platform specific
+ * whichEndIsUp.c
+ * determines whether this is a big-endian
+ * or a little-endian computer
  */
 
 #include <stdio.h>
