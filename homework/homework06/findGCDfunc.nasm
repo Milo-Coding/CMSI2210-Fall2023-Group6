@@ -14,8 +14,8 @@ filetop:
          mov         ebp,  esp         ;
 
 getnums:
-         mov         eax,  [ebp+8]     ; get first number (locations taken from example)
-         mov         ecx,  edx         ; get second number
+         mov         eax,  [ebp+8]     ; get first number (arg 2)
+         mov         ecx,  edx         ; get second number (arg 3)
 
 calc:
          cmp         eax,  ecx         ;
