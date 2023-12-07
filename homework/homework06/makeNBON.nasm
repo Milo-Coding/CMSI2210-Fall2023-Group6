@@ -3,6 +3,11 @@
 ;
 ; Win32 program that calls makeNBO.nasm to swap the byte if
 ; it is "little-endian" and needs bytes swapped
+;
+; to assemble (windows):
+;  nasm -f win32 makeNBON.nasm
+; to link:
+;  gcc -m32 makeNBON.obj makeNBOC.c -o makeNBON.exe
 ; ----------------------------------------------------------------------------
 
          global      _main

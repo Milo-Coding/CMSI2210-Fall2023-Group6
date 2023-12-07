@@ -3,6 +3,9 @@
  * purpose:  takes a number as a command line argument and
  *    swaps its byte order to make it compatible with network
  *    messages which are big-endian
+ *
+ * compile/link program:
+ *  gcc -m32 testMakeNBOC.c makeNBOC.c -o makeNBOC.exe
  */
 
 #include <stdio.h>

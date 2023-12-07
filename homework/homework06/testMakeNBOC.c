@@ -1,7 +1,10 @@
 /*
  * testMakeNBOC.c
- 
+ *
  * tests the code for makeNBOC
+ *
+ * compile/link program:
+ *  gcc -m32 testMakeNBOC.c makeNBOC.c -o makeNBOC.exe
  */
 
 #include <stdio.h>

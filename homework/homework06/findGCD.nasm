@@ -2,6 +2,11 @@
 ; findGCD.nasm
 ;
 ; Win32 program to find the GCD
+;
+; to assemble (windows):
+;  nasm -f win32 findGCD.nasm
+; to link:
+;  gcc -m32 findGCD.obj -o findGCD.exe
 ; ----------------------------------------------------------------------------
 
          global      _main

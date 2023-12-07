@@ -2,6 +2,11 @@
 ; paritygen.nasm
 ;
 ; Win32 program that prints a "1" if we have odd parity and a "0" otherwise
+;
+; to assemble (windows):
+;  nasm -f win32 paritygen.nasm
+; to link:
+;  gcc -m32 paritygen.obj -o paritygen.exe
 ; ----------------------------------------------------------------------------
 
          global      _main

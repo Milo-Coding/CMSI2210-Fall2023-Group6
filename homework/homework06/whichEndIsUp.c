@@ -2,6 +2,9 @@
  * whichEndIsUp.c
  * determines whether this is a big-endian
  * or a little-endian computer
+ *
+ * compile/link program:
+ *  gcc -m32 whichEndIsUp.c -o whichEndIsUp.exe
  */
 
 #include <stdio.h>

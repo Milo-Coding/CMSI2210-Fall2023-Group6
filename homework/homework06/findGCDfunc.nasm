@@ -1,7 +1,12 @@
 ; ----------------------------------------------------------------------------
-; gcdFinder.nasm
+; findGCDfunc.nasm
 ;
 ; Win32 function to find the GCD when called by gcdFinder.c
+;
+; to assemble (windows):
+;  nasm -f win32 findGCDfunc.nasm
+; to link for win32:
+;  see gcdFinder.c
 ; ----------------------------------------------------------------------------
 
          global      _gcdFinder
