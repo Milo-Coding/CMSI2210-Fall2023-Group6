@@ -1,0 +1,75 @@
+
+
+Evaluation Criteria ~ homework06
+CMSI 2210 Section all Fall 2023
+=================================
+
+FINDGCD.NASM
+   nasm file assembles  [5 pts.]
+   nasm runs            [5 pts.]
+   output correct       [3 pts.]
+GCDFINDER
+   nasm file assembles  [5 pts.]
+   gcdFinder.c compiles [5 pts.]
+   link both files OK   [5 pts.]
+   nasm returns value   [5 pts.]
+   output correct       [1 pts.]
+PARITYGEN
+   nasm file assembles  [5 pts.]
+   nasm runs            [5 pts.]
+   output correct       [3 pts.]
+WHICHENDISUP
+   compiles no errors   [5 pts.]
+   runs no errors       [5 pts.]
+MAKENBOC.C
+   compiles no errors   [5 pts.]
+   uses previous func.  [5 pts.]
+   tester compiles      [5 pts.]
+   tester runs          [5 pts.]
+   output correct       [3 pts.]
+MAKENBO.NASM
+   nasm file assembles  [5 pts.]
+   link all files OK    [5 pts.]
+   calls "C" function   [5 pts.]
+   output correct       [3 pts.]
+
+Total possible points 100
+
+========================================================
+
+TOTAL EARNED POINTS:
+   you earned 98.00/100.00 which is 98% which is an A-plus
+
+========================================================
+SPECIFIC COMMENTS/FEEDBACK:
+
+Thanks for including the build commands ~ most helpful!
+
+problem 1 findGCD.nasm: perfect!
+
+problem 2 fingGCDfunc.nasm & gcdFinder.c: builds fine, but when running it
+   only does the first test and then quits.  Output is just the "2" case.
+
+problem 3 paritygen.nasm: perfect again!
+
+problem 4 whichEndIsUp: AGAIN with the perfect!
+
+problem 5 makeNBOC.c & makeNBOCtest.c: you're rolling....
+
+problem 6 makeNBON.nasm & makeNBOC.c: HUZZAH!!!  perfect again.
+
+========================================================
+SEMESTER HOMEWORK TOTALS:
+
+   homework01 ~ 100.00% of  5 points =  5.00 points
+   homework02 ~  97.50% of  5 points =  4.88 points
+   homework03 ~ 100.00% of  5 points =  5.00 points
+   homework04 ~  96.67% of  5 points =  4.83 points
+   homework05 ~  87.00% of 10 points =  8.70 points
+   homework06 ~  98.00% of 15 points = 14.70 points
+                       semester total: 43.11 out of 45.00 = 95.80%
+                             which is an A
+
+Nice job on ALL these assignments and it's been great having you in class
+this semester!  I look forward to seeing you next semester.  Have a great
+holiday break.....
